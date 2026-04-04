@@ -1,0 +1,19 @@
+[foo]
+
+exten = 1,1,Dial(PJSIP/6000,20)
+
+exten => 3610,1,Answer()
+exten => 3610,n,Softmodem(127.0.0.1,3610,v(V23)ld(7)s(1)e)
+exten => 3610,n,Hangup()
+
+exten => 3611,1,Answer()
+exten => 3611,n,Softmodem(127.0.0.1,3611,v(V23)ld(7)s(1)e)
+exten => 3611,n,Hangup()
+
+exten => 3614,1,Answer()
+exten => 3614,n,Softmodem(127.0.0.1,3614,v(V23)ld(7)s(1)e)
+exten => 3614,n,Hangup()
+
+exten => 3615,1,Answer()
+exten => 3615,n,Softmodem(127.0.0.1,3615,v(V23)ld(7)s(1)e)
+exten => 3615,n,Hangup()
