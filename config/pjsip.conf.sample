@@ -1,7 +1,7 @@
 [transport-udp]
 type=transport
 protocol=udp
-bind=192.168.1.1
+bind=0.0.0.0:5060
 
 [6000]
 type=endpoint
