@@ -28,6 +28,8 @@ RUN cd / && \
     menuselect/menuselect --disable-category MENUSELECT_RES menuselect.makeopts && \
     menuselect/menuselect --disable-category MENUSELECT_TESTS menuselect.makeopts && \
     menuselect/menuselect --disable-category MENUSELECT_UTILS menuselect.makeopts && \
+    menuselect/menuselect --enable res_rtp_asterisk menuselect.makeopts && \
+    menuselect/menuselect --enable res_timing_timerfd menuselect.makeopts && \
     menuselect/menuselect --enable chan_pjsip menuselect.makeopts && \
     menuselect/menuselect --enable app_softmodem menuselect.makeopts && \
     menuselect/menuselect --check-deps menuselect.makeopts && \
