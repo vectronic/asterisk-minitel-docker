@@ -1,1 +1,3 @@
-config/*.conf
+config/pjsip.conf
+config/extensions.conf
+
