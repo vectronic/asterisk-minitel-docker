@@ -1,0 +1,4 @@
+- Docker image builds Asterisk from source on Ubuntu 26.04 and starts both Asterisk and minitel-server via /start.sh.
+- The Dockerfile uses a multi-stage build: builder compiles Asterisk and prepares the Python venv, runtime installs only detected shared-library packages and copies runtime artifacts.
+- Source-built shared libs (such as /usr/lib/libasteriskssl.so.1) are bundled from the builder into /tmp/runtime-custom-libs.tar and extracted in runtime to prevent missing-library startup failures.
+- Primary local verification command: docker build --pull -t vectronic/asterisk-minitel .
