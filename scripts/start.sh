@@ -6,8 +6,6 @@
 # Start the minitel server in the background
 cd minitel-server && . .venv/bin/activate && python3 MinitelSrv.py &
 
-# Wait for any process to exit
-wait -n
-
-# Exit with status of process that exited first
-exit $?
+# Keep the container alive while any managed process is still running.
+# This avoids restart loops when only one child exits.
+wait
