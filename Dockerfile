@@ -25,7 +25,7 @@ RUN set -eux; \
     curl -fsSL https://raw.githubusercontent.com/johnnewcombe/asterisk-Softmodem/app_softmodem/app_softmodem.c -o "/usr/src/${source_dir}/apps/app_softmodem.c"; \
     cd "/usr/src/${source_dir}"; \
     ./contrib/scripts/install_prereq install; \
-    ./configure; \
+    ./configure --with-pjproject-bundled; \
     cd menuselect; \
     make menuselect; \
     cd ..; \
@@ -36,9 +36,19 @@ RUN set -eux; \
     menuselect/menuselect --disable-category MENUSELECT_RES menuselect.makeopts; \
     menuselect/menuselect --disable-category MENUSELECT_TESTS menuselect.makeopts; \
     menuselect/menuselect --disable-category MENUSELECT_UTILS menuselect.makeopts; \
+    menuselect/menuselect --enable codec_ulaw menuselect.makeopts; \
     menuselect/menuselect --enable res_rtp_asterisk menuselect.makeopts; \
     menuselect/menuselect --enable res_timing_timerfd menuselect.makeopts; \
     menuselect/menuselect --enable chan_pjsip menuselect.makeopts; \
+    menuselect/menuselect --enable res_pjsip_registrar menuselect.makeopts; \
+    menuselect/menuselect --enable res_pjsip_messaging menuselect.makeopts; \
+    menuselect/menuselect --enable res_pjsip_sdp_rtp menuselect.makeopts; \
+    menuselect/menuselect --enable res_pjsip_session menuselect.makeopts; \
+    menuselect/menuselect --enable res_pjsip_logger menuselect.makeopts; \
+    menuselect/menuselect --enable res_pjsip_authenticator_digest menuselect.makeopts; \
+    menuselect/menuselect --enable res_pjsip_endpoint_identifier_ip menuselect.makeopts; \
+    menuselect/menuselect --enable res_pjsip_endpoint_identifier_user menuselect.makeopts; \
+    menuselect/menuselect --enable pbx_config menuselect.makeopts; \
     menuselect/menuselect --enable app_softmodem menuselect.makeopts; \
     menuselect/menuselect --check-deps menuselect.makeopts; \
     make -j"$(nproc)" all install; \

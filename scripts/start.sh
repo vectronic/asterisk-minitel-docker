@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start asterisk in the background
-/usr/sbin/asterisk -c -vvvv -g &
+/usr/sbin/asterisk -f -vvvv &
 
 # Start the minitel server in the background
 cd /minitel-server && . .venv/bin/activate && python3 MinitelSrv.py &
