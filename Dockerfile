@@ -49,6 +49,7 @@ RUN set -eux; \
     menuselect/menuselect --enable res_pjsip_endpoint_identifier_ip menuselect.makeopts; \
     menuselect/menuselect --enable res_pjsip_endpoint_identifier_user menuselect.makeopts; \
     menuselect/menuselect --enable pbx_config menuselect.makeopts; \
+    menuselect/menuselect --enable app_dial menuselect.makeopts; \
     menuselect/menuselect --enable app_softmodem menuselect.makeopts; \
     menuselect/menuselect --check-deps menuselect.makeopts; \
     make -j"$(nproc)" all install; \
@@ -58,6 +59,7 @@ RUN set -eux; \
 RUN set -eux; \
     git clone --depth 1 https://github.com/BwanaFr/minitel-server.git /minitel-server; \
     cd /minitel-server; \
+    sed -i 's/PROCESS_PARITY[[:space:]]*=[[:space:]]*True/PROCESS_PARITY = False/' minitel_server/constant.py; \
     python3 -m venv .venv; \
     . .venv/bin/activate; \
     pip install --no-cache-dir pyyaml

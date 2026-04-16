@@ -3,20 +3,27 @@ type=transport
 protocol=udp
 bind=0.0.0.0:5060
 
-[6000]
+[endpoint-defaults](!)
 type=endpoint
 context=foo
 disallow=all
 allow=ulaw
 transport=transport-udp
 auth=commonauth
-aors=6000
 
 [commonauth]
 type=auth
 auth_type=userpass
 username=xxx
 password=xxx
+
+[global]
+type=global
+endpoint_identifier_order=username,ip
+
+[6000](endpoint-defaults)
+type=endpoint
+aors=6000
 
 [6000]
 type=aor

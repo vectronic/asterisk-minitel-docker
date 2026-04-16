@@ -22,4 +22,4 @@ as appropriate and then rename to:
 
 ### Usage
 
-`docker run -d -v ./config:/etc/asterisk -p 5060:5060/udp -p 10000-10030:10000-10030/udp vectronic/asterisk-minitel`
+`docker run -d -v ./config:/etc/asterisk --network host vectronic/asterisk-minitel`
